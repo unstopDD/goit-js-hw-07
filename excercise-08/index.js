@@ -9,18 +9,20 @@ let width = 30;
 let height = 30;
 let boxRef = [];
 
+const randomColor = () => {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+
+  const bgColor = `rgb(${r}, ${g}, ${b})`;
+  return bgColor;
+};
+
 const createBox = () => {
   const divRef = document.createElement('div');
-  const randomColor =
-    // eslint-disable-next-line prefer-template
-    Math.floor(Math.random() * 256) +
-    ',' +
-    Math.floor(Math.random() * 256) +
-    ',' +
-    Math.floor(Math.random() * 256);
   divRef.style.width = `${width}px`;
   divRef.style.height = `${height}px`;
-  divRef.style.backgroundColor = `rgb(${randomColor})`;
+  divRef.style.backgroundColor = randomColor();
   return divRef;
 };
 
@@ -38,9 +40,7 @@ rendrBtn.addEventListener('click', () => {
 });
 
 destroyBtn.addEventListener('click', () => {
-  while (boxesRef.firstChild) {
-    boxesRef.firstChild.remove();
-  }
+  boxesRef.innerHTML = '';
   boxRef = [];
   width = 30;
   height = 30;

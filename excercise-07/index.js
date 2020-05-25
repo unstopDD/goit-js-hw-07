@@ -7,4 +7,4 @@ function changeFontSize(event) {
   const inputValue = event.target.value;
   textRef.style.fontSize = ` ${inputValue}px`;
 }
-inputRef.addEventListener('change', changeFontSize);
+inputRef.addEventListener('input', changeFontSize);
